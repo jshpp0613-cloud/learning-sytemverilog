@@ -23,4 +23,5 @@ module pixel_processor;
                  x, layerA[x], layerB[x], and_out[x], or_out[x], xor_out[x], not_out[x]);
     end
     $finish;
-    
+    end
+endmodule
