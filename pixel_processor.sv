@@ -17,11 +17,11 @@ module pixel_processor;
       xor_out[i] = layerA[i] ^ layerB[i];
       not_out[i] = ~layerA[i];
     end
-    $display ("Pixel | LayerA LayerB | AND OR XOR NOT")
+    $display ("Pixel | LayerA LayerB | AND OR XOR NOT");
     for(i = 0; i < 4; i = i + 1) begin
       $display ("%0d         | %b         %b         | %b         %b         %b         %b"
                 i, layerA[i], layerB[i], and_out[i], or_out[i], xor_out[i], not_out[i]);
     end
-    $finish
+    $finish;
   end
 endmodule
