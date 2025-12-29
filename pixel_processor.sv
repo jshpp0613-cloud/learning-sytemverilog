@@ -1,23 +1,31 @@
 module pixel_processor;
-  logic [3:0][7:0] layerA, layerB;  // 4 pixels of 8 bits
-  logic [3:0][7:0] and_out, or_out, xor_out, not_out;
-  integer i;
-  initial begin
-    layerA[0] = 8'b01101001; layerB[0] = 8'b01001011;
-    layerA[1] = 8'b10001101; layerB[1] = 8'b01110011;
-    layerA[2] = 8'b00110011; layerB[2] = 8'b10101010;
-    layerA[3] = 8'b00010001; layerB[3] = 8'b11101110;
-    for(i = 0; i < 4; i = i + 1) begin
-      and_out[i] = layerA[i] & layerB[i];
-      or_out[i] = layerA[i] | layerB[i];
-      xor_out[i] = layerA[i] ^ layerB[i];
-      not_out[i] = ~layerA[i];
+    logic [7:0] layerA0, layerA1, layerA2, layerA3;
+    logic [7:0] layerB0, layerB1, layerB2, layerB3;
+    logic [7:0] and0, and1, and2, and3;
+    logic [7:0] or0, or1, or2, or3;
+    logic [7:0] xor0, xor1, xor2, xor3;
+    logic [7:0] not0, not1, not2, not3;
+
+    initial begin
+        // Initialize pixels
+        layerA0 = 8'b01101001; layerB0 = 8'b01001011;
+        layerA1 = 8'b10001101; layerB1 = 8'b01110011;
+        layerA2 = 8'b00110011; layerB2 = 8'b10101010;
+        layerA3 = 8'b00010001; layerB3 = 8'b11101110;
+
+        // Bitwise operations
+        and0 = layerA0 & layerB0; or0 = layerA0 | layerB0; xor0 = layerA0 ^ layerB0; not0 = ~layerA0;
+        and1 = layerA1 & layerB1; or1 = layerA1 | layerB1; xor1 = layerA1 ^ layerB1; not1 = ~layerA1;
+        and2 = layerA2 & layerB2; or2 = layerA2 | layerB2; xor2 = layerA2 ^ layerB2; not2 = ~layerA2;
+        and3 = layerA3 & layerB3; or3 = layerA3 | layerB3; xor3 = layerA3 ^ layerB3; not3 = ~layerA3;
+
+        // Display results
+        $display("Pixel | LayerA LayerB | AND OR XOR NOT");
+        $display("0     | %b %b | %b %b %b %b", layerA0, layerB0, and0, or0, xor0, not0);
+        $display("1     | %b %b | %b %b %b %b", layerA1, layerB1, and1, or1, xor1, not1);
+        $display("2     | %b %b | %b %b %b %b", layerA2, layerB2, and2, or2, xor2, not2);
+        $display("3     | %b %b | %b %b %b %b", layerA3, layerB3, and3, or3, xor3, not3);
+
+        $finish;
     end
-    $display ("Pixel | LayerA LayerB | AND OR XOR NOT");
-    for(i = 0; i < 4; i = i + 1) begin
-      $display ("%0d         | %b         %b         | %b         %b         %b         %b"
-                i, layerA[i], layerB[i], and_out[i], or_out[i], xor_out[i], not_out[i]);
-    end
-    $finish;
-  end
 endmodule
