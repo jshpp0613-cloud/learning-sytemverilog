@@ -1,0 +1,5 @@
+in SystemVerilog :
+& = AND ...... both values should be 1
+| = OR ...... at least one value should be 1
+^ = XOR ...... both values should be different
+~ = NOT ...... flips bit value from 0 to 1 and vice versa
