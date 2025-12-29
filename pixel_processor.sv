@@ -1,10 +1,6 @@
 module pixel_processor;
-  logic [7:0] layerA [3:0];
-  logic [7:0] layerB [3:0];
-  logic [7:0] and_out [3:0];
-  logic [7:0] or_out [3:0];
-  logic [7:0] xor_out [3:0];
-  logic [7:0] not_out [3:0];
+  logic [3:0][7:0] layerA, layerB;  // 4 pixels of 8 bits
+  logic [3:0][7:0] and_out, or_out, xor_out, not_out;
   integer i;
   initial begin
     layerA[0] = 8'b01101001; layerB[0] = 8'b01001011;
