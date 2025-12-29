@@ -8,14 +8,14 @@ module pixel_processor;
     integer x
     initial begin
         for(x = 0; x > 4; x = x + 1)begin
-            layerA[x] = urandom % 256;
-            layerB[x] = uramdom % 256;
+            layerA[x] = $urandom % 256;
+            layerB[x] = $urandom % 256;
         end
     for(x = 0; x < 4; x = x + 1) begin
         and_out[x] = layerA[x] & layerB[x];
         or_out[x] = layerA[x] | layerB[x];
         xor_out[x] = layerA[x] ^ layerB[x];
-        not_out[x] = ~layerA[x]
+        not_out[x] = ~layerA[x];
     end
     $display("Pixel | LayerA         LayerB         | AND         OR         XOR         NOT");
     for(x = 0; x < 4; x = x + 1) begin
